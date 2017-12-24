@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+
 using namespace std;
 
 
@@ -16,8 +18,8 @@ void initArray(int *a, int n)
     for(int i = 0; i < n; i++)
         a[i] = (n-1) - i;
     
-    cout << "Array: ";
-    printArray(a, 0, n);
+ //   cout << "Array: ";
+//    printArray(a, 0, n);
 }
 
 //merge right and left
@@ -76,12 +78,18 @@ int main()
 {
     int *array;
     int n;
+    clock_t seqTime;
+    
+    
     cout << "Input size of array:";
     cin >> n;
     
     array = new int[n];
-    
+        
     initArray(array, n);
     
+    seqTime = clock();
     devide(array, 0, n);
+    cout << "Seqential exectution time: " << ((float)(clock() - seqTime))/CLOCKS_PER_SEC << endl;
+    cout << "Clocks: " << CLOCKS_PER_SEC << endl; 
 }
